@@ -19,13 +19,13 @@
           <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profesores/create">Profesores</a>
+          <a class="nav-link" href="{{route('profesores.create')}}">Profesores</a>
         </li>                                                                                                                       
         <li class="nav-item">
-          <a class="nav-link" href="">Grupos</a>
+          <a class="nav-link" href="{{route("grupos.create")}}">Grupos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="materias/create">Materias</a>
+          <a class="nav-link" href="{{route('materias.create')}}">Materias</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Salir</a>

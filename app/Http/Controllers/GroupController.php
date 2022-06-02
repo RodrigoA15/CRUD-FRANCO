@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\Subject;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
+// use PhpParser\Node\Expr\FuncCall;
 
 class GroupController extends Controller
 {
@@ -24,7 +27,11 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        $teachers = Teacher::all();
+        $materias = Subject::all();
+        return view('Groups.create', compact('teachers', 'materias'));
+
+      
     }
 
     /**
@@ -35,9 +42,16 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $grupos = new Group;
+        $grupos->anio = $request->anio;
+        $grupos->periodo = $request->periodo;
+        $grupos->teacher_id = $request->teacher_id;
+        $grupos->subject_id = $request->subject_id;
+        $grupos->save();
 
+        return redirect()->route('grupos.create');
+    }
+    
     /**
      * Display the specified resource.
      *
@@ -82,4 +96,6 @@ class GroupController extends Controller
     {
         //
     }
+
+    
 }

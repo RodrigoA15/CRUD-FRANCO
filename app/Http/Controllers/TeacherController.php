@@ -14,7 +14,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        
+        $teachers = Teacher::simplePaginate(2);
+        return view('Teachers.index', compact('teachers'));
+
     }
 
     /**
@@ -29,7 +31,7 @@ class TeacherController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     *          
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */

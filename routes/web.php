@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,5 @@ Route::get('/', function () {
 Route::resource('profesores', TeacherController::class);
 //
 Route::resource('materias', SubjectController::class);
+//
+Route::resource('grupos', GroupController::class);
