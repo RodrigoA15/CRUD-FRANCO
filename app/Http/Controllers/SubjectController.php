@@ -14,7 +14,9 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $subjects = Subject::simplePaginate(10);
+        return view('Subjects.index', compact('subjects'));
+
     }
 
     /**
@@ -40,7 +42,7 @@ class SubjectController extends Controller
         $materias->credito = $request->credito;
         $materias->costo = $request->costo;
         $materias->save();
-        return redirect()->route('materias.create');
+        return redirect()->route('materias.index');
         
     }
 
@@ -84,8 +86,9 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy($id)
     {
-        //
+        Subject::destroy($id);
+        return redirect()->route('materias.index');
     }
 }

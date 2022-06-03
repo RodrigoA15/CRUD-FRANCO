@@ -14,7 +14,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::simplePaginate(2);
+        $teachers = Teacher::simplePaginate(10);
         return view('Teachers.index', compact('teachers'));
 
     }
@@ -46,7 +46,7 @@ class TeacherController extends Controller
         $teachers->nivel_academico = $request->nivel_academico;
         $teachers->save();
         // return "Usuario guardado con exito";
-         return redirect()->route('profesores.create');
+         return redirect()->route('profesores.index');
 
     }
 
@@ -69,7 +69,8 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        //
+        $teacher = Teacher::find($id);                                              
+        return view('Teachers.edit', compact('teacher'));
     }
 
     /**
@@ -79,9 +80,18 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Teacher $teachers)
     {
-        //
+    
+        $teachers->nombre = $request->nombre;
+        $teachers->apellido = $request->apellido;
+        $teachers->direccion = $request->direccion;
+        $teachers->correo = $request->correo;
+        $teachers->telefono = $request->telefono;
+        $teachers->nivel_academico = $request->nivel_academico;
+        $teachers->save();
+        // return "Usuario guardado con exito";
+         return redirect()->route('profesores.index');
     }
 
     /**
@@ -92,6 +102,7 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Teacher::destroy($id);
+        return redirect()->route('profesores.index');
     }
 }

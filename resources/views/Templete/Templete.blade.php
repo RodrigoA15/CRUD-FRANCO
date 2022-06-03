@@ -28,7 +28,7 @@
           <a class="nav-link" href="{{route('materias.create')}}">Materias</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Salir</a>
+            <a class="nav-link" href="">Salir</a>
           </li>
       </ul>
 <div class="container">

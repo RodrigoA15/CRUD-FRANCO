@@ -17,7 +17,9 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        $groups = Group::simplePaginate(10);
+        
+        return view('Groups.index', compact('groups'));
     }
 
     /**
@@ -49,7 +51,7 @@ class GroupController extends Controller
         $grupos->subject_id = $request->subject_id;
         $grupos->save();
 
-        return redirect()->route('grupos.create');
+        return redirect()->route('grupos.index');
     }
     
     /**
