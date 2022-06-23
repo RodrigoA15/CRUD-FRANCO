@@ -25,7 +25,7 @@
                     <td>{{ $teacher->correo }}</td>
                     <td>{{ $teacher->telefono }}</td>
                     <td>{{ $teacher->nivel_academico }}</td>
-                    <td><a href="{{ route('profesores.edit', $teacher) }}" class="btn btn-warning btn-sm" role="button"
+                    <td><a href="{{ route('profesores.edit', $teacher->id) }}" class="btn btn-warning btn-sm" role="button"
                             aria-disabled="true">Editar</a></td>
                     <td>
                         <form action="{{ route('profesores.destroy', $teacher) }}" class="d-inline" method="POST">

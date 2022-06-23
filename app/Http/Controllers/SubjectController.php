@@ -42,7 +42,7 @@ class SubjectController extends Controller
         $materias->credito = $request->credito;
         $materias->costo = $request->costo;
         $materias->save();
-        return redirect()->route('materias.index');
+        return redirect()->route('materias.index');                                                                             
         
     }
 
@@ -63,9 +63,10 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
+    public function edit($id)
     {
-        //
+        $materias = Subject::findOrFail($id);                                              
+        return view('Subjects.edit', compact('materias'));
     }
 
     /**
@@ -75,9 +76,15 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request, $id)
     {
-        //
+        $materias = Subject::find($id);                                              
+        
+        $materias->nombre_subject = $request->nombre_subject;
+        $materias->credito = $request->credito;
+        $materias->costo = $request->costo;
+        $materias->save();
+        return redirect()->route('materias.index');
     }
 
     /**
@@ -89,6 +96,6 @@ class SubjectController extends Controller
     public function destroy($id)
     {
         Subject::destroy($id);
-        return redirect()->route('materias.index');
+        
     }
 }

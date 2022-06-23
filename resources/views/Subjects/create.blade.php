@@ -1,5 +1,6 @@
 @extends('Templete.Templete')
 @section('plantillaweb')
+<h1>Materias</h1>
     <form action="{{route('materias.store')}}" method="POST">
         {{ csrf_field() }}
         <div class="col-lg-6 col-md-4 col-sm-2">

@@ -28,6 +28,12 @@
           <a class="nav-link" href="{{route('materias.create')}}">Materias</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{{route('ambientes.create')}}">Ambientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('horas.create')}}"> Hora Ambientes</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="">Salir</a>
           </li>
       </ul>

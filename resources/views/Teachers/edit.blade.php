@@ -1,6 +1,6 @@
 @extends('Templete.Templete')
 @section('plantillaweb')
-<h1>Editar Profesor No {{$teacher->id}}</h1>
+{{-- <h1>Editar Profesor No {{$teacher->teacher}}</h1> --}}
 <form action="{{route('profesores.update', $teacher)}}" method="POST"> 
     @method('PUT')
     {{ csrf_field() }}  

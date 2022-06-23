@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teacher;
 use Illuminate\Http\Request;
+use App\Models\Teacher;
 
 class TeacherController extends Controller
 {
@@ -16,7 +16,6 @@ class TeacherController extends Controller
     {
         $teachers = Teacher::simplePaginate(10);
         return view('Teachers.index', compact('teachers'));
-
     }
 
     /**
@@ -31,7 +30,7 @@ class TeacherController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *          
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -47,7 +46,6 @@ class TeacherController extends Controller
         $teachers->save();
         // return "Usuario guardado con exito";
          return redirect()->route('profesores.index');
-
     }
 
     /**
@@ -69,7 +67,7 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        $teacher = Teacher::find($id);                                              
+        $teacher = Teacher::findOrFail($id);                                              
         return view('Teachers.edit', compact('teacher'));
     }
 
@@ -80,9 +78,10 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $teachers)
+    public function update(Request $request, $id)
     {
-    
+        $teachers = Teacher::find($id);                                              
+        
         $teachers->nombre = $request->nombre;
         $teachers->apellido = $request->apellido;
         $teachers->direccion = $request->direccion;
@@ -102,7 +101,8 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        Teacher::destroy($id);
-        return redirect()->route('profesores.index');
+        $teacher = Teacher::find($id);
+        
+        $teacher->delete();
     }
 }

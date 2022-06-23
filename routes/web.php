@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AmbientController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\HourAmbientController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +27,7 @@ Route::resource('profesores', TeacherController::class);
 Route::resource('materias', SubjectController::class);
 //
 Route::resource('grupos', GroupController::class);
+//
+Route::resource('ambientes', AmbientController::class);
+//
+Route::resource('horas', HourAmbientController::class);

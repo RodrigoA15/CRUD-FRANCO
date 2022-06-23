@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ambient;
 use App\Models\Group;
+use App\Models\Hour_ambient;
 use App\Models\Subject;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -31,7 +33,9 @@ class GroupController extends Controller
     {
         $teachers = Teacher::all();
         $materias = Subject::all();
-        return view('Groups.create', compact('teachers', 'materias'));
+        $ambients = Ambient::simplePaginate(1);
+        $hours = Hour_ambient::simplePaginate(1);
+        return view('Groups.create', compact('teachers', 'materias', 'ambients', 'hours'));
 
       
     }
@@ -49,6 +53,9 @@ class GroupController extends Controller
         $grupos->periodo = $request->periodo;
         $grupos->teacher_id = $request->teacher_id;
         $grupos->subject_id = $request->subject_id;
+        $grupos->ambient_id = $request->ambient_id;
+        $grupos->hour_ambient_id = $request->hour_ambient_id;
+
         $grupos->save();
 
         return redirect()->route('grupos.index');
@@ -94,9 +101,9 @@ class GroupController extends Controller
      * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Group $group)
+    public function destroy($id)
     {
-        //
+        Group::destroy($id);
     }
 
     

@@ -23,6 +23,12 @@ class CreateGroupsTable extends Migration
             //
             $table->unsignedBigInteger('subject_id');
             $table->foreign("subject_id")->references("id")->on("subjects")->onDelete("cascade")->onUpdate("cascade");
+            //
+            $table->unsignedBigInteger('ambient_id');
+            $table->foreign('ambient_id')->references('id')->on('ambients')->onDelete('cascade')->onUpdate('cascade');
+            //
+            $table->unsignedBigInteger('hour_ambient_id');
+            $table->foreign('hour_ambient_id')->references('id')->on('hour_ambients')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
